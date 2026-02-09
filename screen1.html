@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Screen 1 - CAD Models</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #fff;
+  color: #111;
+}
+
+/* Header (same as your main header) */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: white;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+header a {
+  text-decoration: none;
+  color: #111;
+  font-size: 14px;
+  margin-left: 20px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown select {
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+}
+
+/* Gallery layout for screen1 */
+.gallery-screen {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.big-image {
+  grid-column: span 2;
+}
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.caption {
+  text-align: center;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .gallery-screen {
+    grid-template-columns: 1fr;
+  }
+
+  .big-image {
+    grid-column: span 1;
+  }
+}
+</style>
+
+<script>
+function goToScreen(select) {
+  const page = select.value;
+  if (page) window.location.href = page;
+}
+</script>
+</head>
+
+<body>
+
+<header>
+  <div>JORT SERVER FARM PROTFOLIO</div>
+  <nav>
+    <a href="screen7.html">About</a>
+    <a href="https://nasahunch.com/">What is Hunch?</a>
+    <a></a>
+  </nav>
+
+  <div class="dropdown">
+    <select onchange="goToScreen(this)">
+      <option value="">Go to...</option>
+      <option value="index.html">Home Page</option>
+      <option value="screen1.html">Cad Models</option>
+      <option value="screen2.html">Screen 2</option>
+      <option value="screen3.html">Screen 3</option>
+      <option value="screen4.html">Screen 4</option>
+      <option value="screen5.html">Screen 5</option>
+      <option value="screen6.html">Screen 6</option>
+    </select>
+  </div>
+</header>
+
+<main class="gallery-screen">
+
+  <!-- 1 Big Image -->
+  <div class="image-container big-image">
+    <img src="https://via.placeholder.com/1200x600.png?text=Big+Image+1" alt="Big Image 1">
+    <div class="caption">Caption for Big Image 1</div>
+  </div>
+
+  <!-- 2 Small Images -->
+  <div class="image-container">
+    <img src="https://via.placeholder.com/600x400.png?text=Small+Image+1" alt="Small Image 1">
+    <div class="caption">Caption for Small Image 1</div>
+  </div>
+  <div class="image-container">
+    <img src="https://via.placeholder.com/600x400.png?text=Small+Image+2" alt="Small Image 2">
+    <div class="caption">Caption for Small Image 2</div>
+  </div>
+
+  <!-- 1 Big Image -->
+  <div class="image-container big-image">
+    <img src="https://via.placeholder.com/1200x600.png?text=Big+Image+2" alt="Big Image 2">
+    <div class="caption">Caption for Big Image 2</div>
+  </div>
+
+  <!-- 2 Small Images -->
+  <div class="image-container">
+    <img src="https://via.placeholder.com/600x400.png?text=Small+Image+3" alt="Small Image 3">
+    <div class="caption">Caption for Small Image 3</div>
+  </div>
+  <div class="image-container">
+    <img src="https://via.placeholder.com/600x400.png?text=Small+Image+4" alt="Small Image 4">
+    <div class="caption">Caption for Small Image 4</div>
+  </div>
+
+</main>
+
+
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Portfolio</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #fff;
+  color: #111;
+}
+
+/* Sticky Header */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: white;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center
+}
+
+header a {
+  text-decoration: none;
+  color: #111;
+  font-size: 14px;
+  margin-left: 20px;
+}
+
+/* Dropdown menu */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown select {
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+}
+
+/* Gallery Grid */
+.gallery {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 40px 100px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+}
+
+.gallery-item {
+  text-decoration: none;
+  color: inherit;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.gallery-item span {
+  display: block;
+  margin-top: 14px;
+  font-size: 15px;
+  text-decoration: underline;
+  letter-spacing: 0.02em;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.02);
+}
+
+/* Image-only sections */
+.section {
+  border-top: 1px dashed #ddd;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.section h2 {
+  font-weight: 500;
+  margin-bottom: 40px;
+}
+
+.image-stack {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.image-stack img {
+  max-width: 300px;
+  height: auto;
+  border-radius: 6px;
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid #e5e5e5;
+  padding: 60px 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+footer h4 {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+footer p {
+  margin: 0;
+  font-size: 14px;
+  color: #444;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .gallery {
+    grid-template-columns: 1fr;
+    padding: 40px 20px 80px;
+  }
+
+  .gallery-item img {
+    height: 300px;
+  }
+
+  footer {
+    grid-template-columns: 1fr;
+  }
+
+  .image-stack {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+</style>
+
+<script>
+function goToScreen(select) {
+  const page = select.value;
+  if (page) {
+    window.location.href = page;
+  }
+}
+</script>
+</head>
+
+<body>
+
+<header>
+  <div>JORT SERVER FARM PROTFOLIO</div>
+  <nav>
+    <a href="screen7.html">About</a>
+    <a href="https://nasahunch.com/">What is Hunch?</a>
+    <a>  </a>
+  </nav>
+
+  <div class="dropdown">
+    <select onchange="goToScreen(this)">
+      <option value="">Go to...</option>
+      <option value="index.html">Home Page</option>
+      <option value="screen1.html">Cad Models</option>
+      <option value="screen2.html">Screen 2</option>
+      <option value="screen3.html">Screen 3</option>
+      <option value="screen4.html">Screen 4</option>
+      <option value="screen5.html">Screen 5</option>
+      <option value="screen6.html">Screen 6</option>
+    </select>
+  </div>
+</header>
+
+<!-- MAIN GALLERY -->
+<main class="gallery">
+
+  <a href="screen1.html" class="gallery-item">
+  <img src="https://fiverr-res.cloudinary.com/videos/t_main1,q_auto,f_auto/zkhxdys89uvxxhjsommx/make-a-3d-model-of-any-part-in-catia-ds.png" alt="CAD Model">
+    <span>Cad Models</span>
+  </a>
+
+  <a href="screen2.html" class="gallery-item">
+  <img src="https://cdn.pixabay.com/photo/2018/05/03/11/51/blueprint-3379122_1280.png" alt="CAD Model">
+    <span>Data</span>
+  </a>
+
+  <a href="screen3.html" class="gallery-item">
+    <img src="https://images.unsplash.com/photo-1581091012184-5c7a1d60b8d3">
+    <span>Models</span>
+  </a>
+
+  <a href="screen4.html" class="gallery-item">
+    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
+    <span>Aerial</span>
+  </a>
+
+  <a href="screen5.html" class="gallery-item">
+    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475">
+    <span>Design</span>
+  </a>
+
+  <a href="screen6.html" class="gallery-item">
+    <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7">
+    <span>Misc</span>
+  </a>
+
+</main>
+
+<!-- IMAGE-ONLY SECTIONS (Reduced images) -->
+<section class="section">
+  <h2>Sample Images</h2>
+  <div class="image-stack">
+    <img src="https://images.unsplash.com/photo-1581090700227-1e37b190418e">
+    <img src="https://images.unsplash.com/photo-1581091012184-5c7a1d60b8d3">
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <h4>Email</h4>
+    <p>youremail@example.com</p>
+  </div>
+
+  <div>
+    <h4>Location</h4>
+    <p>United States</p>
+  </div>
+
+  <div>
+    <h4>Links</h4>
+    <p>GitHub · LinkedIn · Instagram</p>
+  </div>
+</footer>
+
+</body>
+</html>
