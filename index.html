@@ -166,28 +166,15 @@ function goToScreen(select) {
 
 <body>
 
-<header>
-  <div>JORT Server Farm Portfolio</div>
+<div id="header-placeholder"></div>
 
-  <nav>
-    <a href="screen7.html">About</a>
-    <a href="https://nasahunch.com/">What is Hunch?</a>
-    <a href="images/final_page-0001.jpg" target="_blank">Final PDF</a>
-  </nav>
-
-  <div class="dropdown">
-    <select onchange="goToScreen(this)">
-      <option value="">Go to...</option>
-      <option value="index.html">Home Page</option>
-      <option value="screen1.html">Cad Models</option>
-      <option value="screen2.html">Screen 2</option>
-      <option value="screen3.html">Screen 3</option>
-      <option value="screen4.html">Screen 4</option>
-      <option value="screen5.html">Screen 5</option>
-      <option value="screen6.html">Screen 6</option>
-    </select>
-  </div>
-</header>
+<script>
+fetch('header.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('header-placeholder').innerHTML = data;
+  });
+</script>
 
 <!-- MAIN GALLERY -->
 <main class="gallery">
