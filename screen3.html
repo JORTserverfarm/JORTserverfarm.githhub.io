@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Design Sketches</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f6f6f7;
+  color: #111;
+}
+
+/* ===== HEADER ===== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: white;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+header a {
+  text-decoration: none;
+  color: #111;
+  font-size: 14px;
+  margin-left: 20px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown select {
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+}
+
+/* ===== GALLERY ===== */
+.gallery-screen {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.big-image {
+  grid-column: span 2;
+}
+
+/* Card look */
+.image-container {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.image-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.1);
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Caption styling */
+.caption {
+  padding: 14px 16px;
+  font-size: 14px;
+  color: #333;
+  border-top: 1px solid #eee;
+  background: #fafafa;
+  text-align: center;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .gallery-screen {
+    grid-template-columns: 1fr;
+  }
+
+  .big-image {
+    grid-column: span 1;
+  }
+}
+</style>
+
+<script>
+function goToScreen(select) {
+  const page = select.value;
+  if (page) window.location.href = page;
+}
+</script>
+</head>
+
+<body>
+
+<div id="header-placeholder"></div>
+
+<script>
+fetch('header.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('header-placeholder').innerHTML = data;
+  });
+</script>
+
+<main class="gallery-screen">
+
+  <div class="image-container big-image">
+    <img src="images/Sketch_Big.jpeg" alt="Big Sketch">
+    <div class="caption">Main Sketch — Overall concept of the design</div>
+  </div>
+
+  <div class="image-container">
+    <img src="images/Sketch_1.jpeg" alt="Sketch 1">
+    <div class="caption">Sketch 1 — To scale measurements of original design</div>
+  </div>
+
+  <div class="image-container">
+    <img src="images/Sketch_2.jpeg" alt="Sketch 2">
+    <div class="caption">Sketch 2 — Pi Cyl grip idea</div>
+  </div>
+
+  <div class="image-container">
+    <img src="images/Sketch_3.jpeg" alt="Sketch 3">
+    <div class="caption">Sketch 3 — Larger scale design</div>
+  </div>
+
+</main>
+
+</body>
+</html>
