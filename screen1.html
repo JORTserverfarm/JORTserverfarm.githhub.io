@@ -13,11 +13,11 @@
 }
 
 body {
-  background: #fff;
+  background: #f6f6f7;
   color: #111;
 }
 
-/* Header (same as your main header) */
+/* ===== HEADER — UNCHANGED ===== */
 header {
   position: sticky;
   top: 0;
@@ -51,39 +51,51 @@ header a {
   background: white;
 }
 
-/* Gallery layout for screen1 */
+/* ===== GALLERY ===== */
 .gallery-screen {
   max-width: 1200px;
-  margin: 40px auto;
+  margin: 50px auto;
   padding: 0 20px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: 28px;
 }
 
 .big-image {
   grid-column: span 2;
 }
 
+/* Card look */
 .image-container {
-  display: flex;
-  flex-direction: column;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.image-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.1);
 }
 
 .image-container img {
   width: 100%;
   height: auto;
-  border-radius: 6px;
+  display: block;
 }
 
+/* Caption styling */
 .caption {
-  text-align: center;
-  margin-top: 8px;
+  padding: 14px 16px;
   font-size: 14px;
   color: #333;
+  border-top: 1px solid #eee;
+  background: #fafafa;
+  text-align: center;
 }
 
-/* Responsive */
+/* ===== Responsive ===== */
 @media (max-width: 900px) {
   .gallery-screen {
     grid-template-columns: 1fr;
@@ -106,11 +118,14 @@ function goToScreen(select) {
 <body>
 
 <header>
-  <div>JORT SERVER FARM PROTFOLIO</div>
+  <div style="display: flex; align-items: center; gap: 12px;">
+    <span>JORT SERVER FARM PORTFOLIO</span>
+    <img src="images/final_page-0001.png" alt="Final PDF" style="height:24px; width:auto;">
+  </div>
+
   <nav>
     <a href="screen7.html">About</a>
     <a href="https://nasahunch.com/">What is Hunch?</a>
-    <a></a>
   </nav>
 
   <div class="dropdown">
@@ -127,42 +142,40 @@ function goToScreen(select) {
   </div>
 </header>
 
+
 <main class="gallery-screen">
 
-  <!-- 1 Big Image -->
   <div class="image-container big-image">
     <img src="images/Pi_Cyl.png" alt="Big Image 1">
-    <div class="caption">Pi Cylinder -- Holds mounted Pis to the frame</div>
+    <div class="caption">Pi Cylinder — Holds mounted Pis to the frame</div>
   </div>
 
-  <!-- 2 Small Images -->
   <div class="image-container">
     <img src="images/1515x17in.png" alt="Small Image 1">
-    <div class="caption">1515x17in -- Mkaes up the frame</div>
+    <div class="caption">1515×17in — Makes up the frame</div>
   </div>
+
   <div class="image-container">
     <img src="images/1515x12in.png" alt="Small Image 2">
-    <div class="caption">1515x12in.png -- Makes up the frame</div>
+    <div class="caption">1515×12in — Makes up the frame</div>
   </div>
 
-  <!-- 1 Big Image -->
   <div class="image-container big-image">
     <img src="images/Switch_Mount.png" alt="Big Image 2">
-    <div class="caption">Switch Mount -- Holds the switch to the frame</div>
+    <div class="caption">Switch Mount — Holds the switch to the frame</div>
   </div>
 
-  <!-- 2 Small Images -->
   <div class="image-container">
     <img src="images/Pi_Holster.png" alt="Small Image 3">
-    <div class="caption">Pi Holster -- Holds all the Pi Cylinders</div>
+    <div class="caption">Pi Holster — Holds all the Pi Cylinders</div>
   </div>
+
   <div class="image-container">
     <img src="images/Assemby_One.png" alt="Small Image 4">
-    <div class="caption">Assemby Part -- Holds corners of the frametogether</div>
+    <div class="caption">Assembly Part — Holds frame corners together</div>
   </div>
 
 </main>
-
 
 </body>
 </html>
