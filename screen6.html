@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Improvements / Future Work</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f6f6f7;
+  color: #111;
+  line-height: 1.6;
+}
+
+.page {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 24px;
+}
+
+.section {
+  background: white;
+  border-radius: 14px;
+  padding: 40px;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+.section h1 {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+
+.section h2 {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.section p {
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 14px;
+}
+
+.callout {
+  background: #fafafa;
+  border-left: 4px solid #111;
+  padding: 18px 22px;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #222;
+}
+</style>
+</head>
+
+<body>
+
+<div id="header-placeholder"></div>
+
+<script>
+fetch('header.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('header-placeholder').innerHTML = data;
+  });
+</script>
+
+<div class="page">
+
+  <div class="section">
+    <h1>Improvements & Future Work</h1>
+    <p>
+      While the Raspberry Pi server cluster is fully functional, there are several areas where it
+      could be enhanced for better performance and usability.
+    </p>
+
+    <h2>Network Performance</h2>
+    <p>
+      The current switch limits the startup speed of workloads. Upgrading to a higher-quality,
+      faster switch would allow jobs to launch significantly quicker.
+    </p>
+
+    <h2>Monitoring & Access</h2>
+    <p>
+      A higher-quality display for the Access Pi would make managing the cluster easier. Adding
+      more monitoring tools could provide real-time insights into workload distribution and system
+      health.
+    </p>
+
+    <h2>Power & Scalability</h2>
+    <p>
+      Power-over-Ethernet (PoE) was not implemented due to resource constraints, but the design
+      supports it without modification. Implementing PoE in the future would simplify power
+      management and make scaling the cluster easier.
+    </p>
+
+    <div class="callout">
+      These improvements focus on faster workload handling, easier management, and better scalability
+      without requiring major redesigns.
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
