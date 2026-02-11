@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>How It Works — Raspberry Pi Server Farm</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f6f6f7;
+  color: #111;
+  line-height: 1.6;
+}
+
+/* ===== CONTENT ===== */
+.page {
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 0 24px;
+}
+
+.section {
+  background: white;
+  border-radius: 14px;
+  padding: 40px;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+.section h1 {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+
+.section h2 {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.section p {
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 14px;
+}
+
+/* ===== IMAGE + TEXT ===== */
+.image-wrap {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  margin: 32px 0;
+}
+
+.image-wrap.reverse {
+  flex-direction: row-reverse;
+}
+
+.image-wrap img {
+  width: 45%;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+.image-wrap .text {
+  width: 55%;
+}
+
+/* ===== CALLOUT ===== */
+.callout {
+  background: #fafafa;
+  border-left: 4px solid #111;
+  padding: 18px 22px;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #222;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .image-wrap,
+  .image-wrap.reverse {
+    flex-direction: column;
+  }
+
+  .image-wrap img,
+  .image-wrap .text {
+    width: 100%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="header-placeholder"></div>
+
+<script>
+fetch('header.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('header-placeholder').innerHTML = data;
+  });
+</script>
+
+<div class="page">
+
+  <div class="section">
+    <h1>System Overview</h1>
+    <p>
+      This project is a Raspberry Pi–based server cluster designed to explore scalable, low-power
+      compute infrastructure. The system consists of a dedicated control node and four diskless
+      worker nodes, all mounted inside a custom aluminum frame.
+    </p>
+    <p>
+      Instead of operating as individual computers, each Raspberry Pi functions as part of a single,
+      coordinated system. Network configuration, firmware, and workloads are all managed centrally,
+      allowing the cluster to behave like a small-scale data center.
+    </p>
+  </div>
+
+  <div class="section">
+    <div class="image-wrap">
+      <img src="https://images.unsplash.com/photo-1629654291663-b91ad427698f" alt="Server hardware">
+      <div class="text">
+        <h2>Head Node & Network Control</h2>
+        <p>
+          The Head Pi is the most critical component of the cluster and operates exclusively as the
+          control plane. It runs DHCP and TFTP services, dynamically assigning IP addresses and boot
+          images to each worker node as they come online.
+        </p>
+        <p>
+          All worker nodes are fully PXE-booted and diskless, meaning they contain no permanent
+          operating system or storage. This allows nodes to be added, removed, or replaced without
+          reconfiguration.
+        </p>
+        <div class="callout">
+          Centralized booting makes the cluster highly modular and simplifies both maintenance and
+          scalability.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="image-wrap reverse">
+      <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31" alt="Networking equipment">
+      <div class="text">
+        <h2>Storage & Workload Management</h2>
+        <p>
+          A 2 TB external high-speed drive connected to the Head Pi provides shared storage for AI
+          models and firmware. Worker nodes access this data over the network, eliminating the need
+          for local disks while maintaining flexibility.
+        </p>
+        <p>
+          The cluster runs k3s, a lightweight Kubernetes distribution, which automatically schedules
+          AI workloads across the available worker nodes. This ensures balanced compute usage and
+          maintains high availability even if individual nodes are restarted.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Access, Cooling, and Future Improvements</h2>
+    <p>
+      A dedicated Access Pi provides immediate local terminal access to the cluster, allowing
+      administrators to monitor and manage the system directly without relying on external devices.
+    </p>
+    <p>
+      Thermal management is handled by two large fans mounted to the rack, powered directly from
+      the Raspberry Pis. This ensures continuous airflow across all nodes during sustained workloads.
+    </p>
+    <p>
+      While Power-over-Ethernet was not implemented due to resource constraints, the physical design
+      supports PoE with no structural changes. Network performance is currently limited by the
+      existing switch, and upgrading to a faster model would significantly improve AI workload
+      startup times.
+    </p>
+    <p>
+      Future improvements also include a higher-quality display to make on-device monitoring and
+      management more intuitive.
+    </p>
+  </div>
+
+</div>
+
+</body>
+</html>
