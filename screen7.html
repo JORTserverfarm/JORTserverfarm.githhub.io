@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>About</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f6f6f7;
+  color: #111;
+  line-height: 1.6;
+}
+
+.page {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 24px;
+}
+
+.section {
+  background: white;
+  border-radius: 14px;
+  padding: 40px;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+.section h1 {
+  font-size: 32px;
+  margin-bottom: 16px;
+}
+
+.section p {
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="header-placeholder"></div>
+
+<script>
+fetch('header.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('header-placeholder').innerHTML = data;
+  });
+</script>
+
+<div class="page">
+
+  <div class="section">
+    <h1>About Us</h1>
+    <p>
+      We are a student engineering group from Warren Tech Central, passionate about building
+      innovative systems and exploring real-world computing challenges.
+    </p>
+    <p>
+      This portfolio showcases our Raspberry Pi server cluster project, a modular, high-performance
+      server designed for lightweight computing and experimentation.
+    </p>
+    <p>
+      The project was developed as part of NASA HUNCH (High School Students United with NASA to
+      Create Hardware), an initiative that connects students with NASA engineers to work on
+      practical, hands-on projects that address real engineering problems.
+    </p>
+    <p>
+      Our work combines design, data analysis, and hardware implementation to create a complete
+      system from sketches and CAD models to a fully functioning server farm.
+    </p>
+  </div>
+
+</div>
+
+</body>
+</html>
