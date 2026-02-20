@@ -35,18 +35,18 @@ header {
 
 /* ===== GALLERY ===== */
 .gallery-screen {
-  max-width: 900px; /* narrower so vertical image looks better */
+  max-width: 1200px;
   margin: 50px auto;
   padding: 0 20px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, auto); /* columns size to image content */
+  justify-content: center;
   gap: 28px;
 }
 
 .big-image {
   grid-column: span 2;
-  max-width: 500px;
-  margin: 0 auto; /* center the vertical image */
+  justify-self: center; /* center the vertical image */
 }
 
 /* Card look */
@@ -56,6 +56,7 @@ header {
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(0,0,0,0.06);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: inline-block;
 }
 
 .image-container:hover {
@@ -64,7 +65,7 @@ header {
 }
 
 .image-container img {
-  width: 100%;
+  max-width: 100%; /* scale down if needed but keep natural size */
   height: auto;
   display: block;
 }
@@ -115,7 +116,7 @@ fetch('header.html')
 
   <!-- Row 1 -->
   <div class="image-container">
-    <img src="images/Design1.jpg" alt="Model 1">
+    <img src="images/Design4.jpg" alt="Model 1">
   </div>
 
   <div class="image-container">
@@ -128,7 +129,7 @@ fetch('header.html')
   </div>
 
   <div class="image-container">
-    <img src="images/Design4.jpg" alt="Model 4">
+    <img src="images/Design1.jpg" alt="Model 4">
   </div>
 
 </main>
