@@ -84,25 +84,36 @@ main {
   text-align: center;
 }
 
-/* CSV links section */
-.csv-links {
+/* ===== RAW DATA ===== */
+.raw-data {
   margin-top: 50px;
+}
+
+.raw-data h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.csv-table-container {
+  margin-bottom: 30px;
   background: #fff;
   border-radius: 12px;
-  padding: 16px;
+  padding: 10px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  overflow-x: auto;
+}
+
+.csv-table-container table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 12px;
+}
+
+.csv-table-container th, .csv-table-container td {
+  border: 1px solid #ddd;
+  padding: 6px 8px;
   text-align: center;
-}
-
-.csv-links a {
-  margin: 0 15px;
-  text-decoration: none;
-  color: #0077cc;
-  font-weight: bold;
-}
-
-.csv-links a:hover {
-  text-decoration: underline;
+  white-space: nowrap;
 }
 
 /* ===== Responsive ===== */
@@ -155,19 +166,49 @@ fetch('header.html')
     </div>
   </div>
 
-  <div class="csv-links">
-    View / download the CSV files: 
-    <a href="csvs/used_ram.csv" target="_blank">RAM Usage</a>
-    <a href="csvs/load.csv" target="_blank">CPU load</a>
-    <a href="csvs/throttled.csv" target="_blank">Throttling</a>
-    <a href="csvs/temp.csv" target="_blank">Temperature</a>
-    <a href="csvs/clock.csv" target="_blank">CPU clock frequency</a>
-    <a href="csvs/total_ram.csv" target="_blank">Total ram</a>
-    <a href="csvs/available_ram.csv" target="_blank">Unused ram</a>
-    <a href="csvs/traffic.csv" target="_blank">Network Traffic</a>
+  <!-- ===== RAW DATA ===== -->
+  <div class="raw-data">
+    <h2>Raw Data</h2>
+
+    <div class="csv-table-container" id="csv-used-ram"></div>
+    <div class="csv-table-container" id="csv-load"></div>
+    <div class="csv-table-container" id="csv-throttled"></div>
+    <div class="csv-table-container" id="csv-temp"></div>
+    <div class="csv-table-container" id="csv-clock"></div>
+    <div class="csv-table-container" id="csv-total-ram"></div>
+    <div class="csv-table-container" id="csv-available-ram"></div>
+    <div class="csv-table-container" id="csv-traffic"></div>
   </div>
 
 </main>
+
+<script>
+// Helper function to load CSV into a table
+function loadCSV(containerId, csvPath, title) {
+  fetch(csvPath)
+    .then(response => response.text())
+    .then(text => {
+      const rows = text.trim().split('\n').map(r => r.split(','));
+      let html = '<h3 style="margin:10px 0; text-align:center;">' + title + '</h3>';
+      html += '<table>';
+      rows.forEach((row, i) => {
+        html += '<tr>' + row.map(cell => i === 0 ? '<th>'+cell+'</th>' : '<td>'+cell+'</td>').join('') + '</tr>';
+      });
+      html += '</table>';
+      document.getElementById(containerId).innerHTML = html;
+    });
+}
+
+// Load all 8 CSVs
+loadCSV('csv-used-ram', 'csvs/used_ram.csv', 'RAM Usage');
+loadCSV('csv-load', 'csvs/load.csv', 'CPU load');
+loadCSV('csv-throttled', 'csvs/throttled.csv', 'Throttling');
+loadCSV('csv-temp', 'csvs/temp.csv', 'Temperature');
+loadCSV('csv-clock', 'csvs/clock.csv', 'CPU Clock Frequency');
+loadCSV('csv-total-ram', 'csvs/total_ram.csv', 'Total RAM');
+loadCSV('csv-available-ram', 'csvs/available_ram.csv', 'Unused RAM');
+loadCSV('csv-traffic', 'csvs/traffic.csv', 'Network Traffic');
+</script>
 
 </body>
 </html>
