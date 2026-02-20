@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" href="images/favicon.ico" type="image/x-icon">
-<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 <meta charset="UTF-8">
 <title>System Monitoring Data</title>
+<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 
 <style>
 * {
@@ -95,12 +95,16 @@ main {
 }
 
 .csv-table-container {
-  margin-bottom: 30px;
+  margin: 10px;
   background: #fff;
   border-radius: 12px;
   padding: 10px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-  overflow-x: auto;
+  overflow: auto;
+  width: 50vw;  /* half viewport width */
+  height: 25vh; /* quarter viewport height */
+  display: inline-block; /* allows side by side */
+  vertical-align: top;
 }
 
 .csv-table-container table {
@@ -120,6 +124,10 @@ main {
 @media (max-width: 900px) {
   .gallery-screen {
     grid-template-columns: 1fr;
+  }
+
+  .csv-table-container {
+    width: 100%;
   }
 }
 </style>
@@ -183,7 +191,7 @@ fetch('header.html')
 </main>
 
 <script>
-// Helper function to load CSV into a table
+// Helper function to load CSV into mini table
 function loadCSV(containerId, csvPath, title) {
   fetch(csvPath)
     .then(response => response.text())
@@ -192,7 +200,7 @@ function loadCSV(containerId, csvPath, title) {
       let html = '<h3 style="margin:10px 0; text-align:center;">' + title + '</h3>';
       html += '<table>';
       rows.forEach((row, i) => {
-        html += '<tr>' + row.map(cell => i === 0 ? '<th>'+cell+'</th>' : '<td>'+cell+'</td>').join('') + '</tr>';
+        html += '<tr>' + row.map(cell => i===0 ? '<th>'+cell+'</th>' : '<td>'+cell+'</td>').join('') + '</tr>';
       });
       html += '</table>';
       document.getElementById(containerId).innerHTML = html;
