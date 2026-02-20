@@ -3,12 +3,135 @@
 <head>
 <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-  <meta charset="UTF-8">
-  <title>Data Status</title>
+<meta charset="UTF-8">
+<title>Models</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f6f6f7;
+  color: #111;
+}
+
+/* ===== HEADER ===== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: white;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+/* ===== GALLERY ===== */
+.gallery-screen {
+  max-width: 900px; /* narrower so vertical image looks better */
+  margin: 50px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.big-image {
+  grid-column: span 2;
+  max-width: 500px;
+  margin: 0 auto; /* center the vertical image */
+}
+
+/* Card look */
+.image-container {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.image-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.1);
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Caption styling */
+.caption {
+  padding: 14px 16px;
+  font-size: 14px;
+  color: #333;
+  border-top: 1px solid #eee;
+  background: #fafafa;
+  text-align: center;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .gallery-screen {
+    grid-template-columns: 1fr;
+  }
+
+  .big-image {
+    grid-column: span 1;
+  }
+}
+</style>
+
 </head>
+
 <body>
 
-  <p>Design not done yet<p>
+<div id="header-placeholder"></div>
+
+<script>
+fetch('header.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('header-placeholder').innerHTML = data;
+  });
+</script>
+
+<main class="gallery-screen">
+
+  <!-- Vertical large image -->
+  <div class="image-container big-image">
+    <img src="images/Design0.jpg" alt="Original Model">
+    <div class="caption">Original model shown at the bottom</div>
+  </div>
+
+  <!-- Row 1 -->
+  <div class="image-container">
+    <img src="images/Design1.jpg" alt="Model 1">
+  </div>
+
+  <div class="image-container">
+    <img src="images/Design3.jpg" alt="Model 2">
+  </div>
+
+  <!-- Row 2 -->
+  <div class="image-container">
+    <img src="images/Design2.jpg" alt="Model 3">
+  </div>
+
+  <div class="image-container">
+    <img src="images/Design4.jpg" alt="Model 4">
+  </div>
+
+</main>
 
 </body>
 </html>
