@@ -141,47 +141,42 @@ fetch('header.html').then(r=>r.text()).then(d=>document.getElementById('header-p
 </footer>
 
 <script>
-const galleryData = [
-  ["c2NyZWVuMS5odG1s","aHR0cHM6Ly9wbHVzLnVuc3BsYXNoLmNvbS9wcmVtaXVtX3Bob3RvLTE2ODE4NzkyMTAxNjQtYWQ2NTMzMDRmYTM1P3c9NTAwJmF1dG89Zm9ybWF0JmZpdD1jcm9wJnE9NjAmZXh0cmE9Y2QgbW9kZWxz","Cad Models"],
-  ["c2NyZWVuMi5odG1s","aW1hZ2VzL0RhdGEuanBn","Data"],
-  ["c2NyZWVuMy5odG1s","aW1hZ2VzL1NrZXRjaF9FeGFtcGxlLmpwZw==","Early Sketches"],
-  ["c2NyZWVuNC5odG1s","aW1hZ2VzL0Rlc2lnbi5qcGc=","Final Design"],
-  ["c2NyZWVuNS5odG1s","aHR0cHM6Ly9pbWFnZXMudW5zcGxhc2guY29tL3Bob3RvLTI1MzA5MDE0Mjc=","How it works"],
-  ["c2NyZWVuNi5odG1s","aHR0cHM6Ly9pbWFnZXMudW5zcGxhc2guY29tL3Bob3RvLTE2Njc2NjY2OTAwNjg1LWIxNzBiNTAxMWQ4ND9zPDUwMCZhdXRvPWZvcm1hdCZmaXQ9Y3JvcCxxPTYw","Future Improvements"]
+const galleryImages = [
+  {page:"screen1.html", src:"https://plus.unsplash.com/premium_photo-1681879210164-ad653304fa35?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8M2QlMjBtb2RlbHxlbnwwfHwwfHx8MA==", label:"Cad Models"},
+  {page:"screen2.html", src:"images/Data.jpg", label:"Data"},
+  {page:"screen3.html", src:"images/Sketch_Example.jpg", label:"Early Sketches"},
+  {page:"screen4.html", src:"images/Design.jpg", label:"Final Design"},
+  {page:"screen5.html", src:"https://images.unsplash.com/photo-1518770660439-4636190af475", label:"How it works"},
+  {page:"screen6.html", src:"https://images.unsplash.com/photo-1667669290685-b170b5011d84?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWR2YW5jZW1lbnRzfGVufDB8fDB8fHww", label:"Future Improvements"}
 ];
 
-const stackData = [
-  "aW1hZ2VzL0h1bmNoLmpwZw==",
-  "aW1hZ2VzL1dhcnJlblRlY2gucG5n"
-];
+const stackImages = ["images/Hunch.jpeg","images/WarrenTech.png"];
 
-function decode(str){return atob(str)}
-
-function generateImages() {
-  const gallery=document.getElementById('gallery-container');
-  galleryData.forEach(item=>{
+function buildGallery() {
+  const g=document.getElementById('gallery-container');
+  galleryImages.forEach(i=>{
     const a=document.createElement('a');
     a.className='gallery-item';
-    a.href=decode(item[0]);
+    a.href=i.page;
     const img=document.createElement('img');
-    img.src=decode(item[1]);
-    img.alt=item[2];
+    img.src=i.src;
+    img.alt=i.label;
     const span=document.createElement('span');
-    span.textContent=item[2];
+    span.textContent=i.label;
     a.appendChild(img);
     a.appendChild(span);
-    gallery.appendChild(a);
+    g.appendChild(a);
   });
 
-  const stack=document.getElementById('image-stack-container');
-  stackData.forEach(item=>{
+  const s=document.getElementById('image-stack-container');
+  stackImages.forEach(src=>{
     const img=document.createElement('img');
-    img.src=decode(item);
-    stack.appendChild(img);
+    img.src=src;
+    s.appendChild(img);
   });
 }
 
-generateImages();
+buildGallery();
 </script>
 
 </body>
