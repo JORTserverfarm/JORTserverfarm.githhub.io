@@ -37,7 +37,7 @@ header {
 
 /* ===== MAIN CONTENT ===== */
 main {
-  max-width: 1200px;
+  max-width: 1200px; /* matches old max-width */
   margin: 50px auto;
   padding: 0 20px;
 }
@@ -45,6 +45,7 @@ main {
 .description {
   margin-bottom: 30px;
   font-size: 16px;
+  text-align: center;
 }
 
 /* ===== GALLERY ===== */
@@ -94,16 +95,17 @@ main {
   margin-bottom: 30px;
 }
 
+/* ===== CSV TABLES ===== */
 .csv-table-container {
-  margin: 20px auto;           /* center horizontally */
+  margin: 20px auto;       /* center each table */
   background: #fff;
   border-radius: 12px;
   padding: 10px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.06);
   overflow: auto;
-  width: 80vw;                 /* almost full width of viewport */
-  max-width: 1800px;           /* prevents it from being huge on big screens */
-  height: 60vh;                /* taller so more rows visible */
+  width: 100%;             /* full width of main content */
+  max-width: 1200px;       /* matches main content width */
+  height: 25vh;            /* original height */
 }
 
 .csv-table-container table {
