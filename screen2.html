@@ -3,12 +3,171 @@
 <head>
 <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-  <meta charset="UTF-8">
-  <title>Data Status</title>
+<meta charset="UTF-8">
+<title>System Monitoring Data</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #f6f6f7;
+  color: #111;
+  line-height: 1.5;
+  padding-bottom: 50px;
+}
+
+/* ===== HEADER ===== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: white;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+/* ===== MAIN CONTENT ===== */
+main {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+
+.description {
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+/* ===== GALLERY ===== */
+.gallery-screen {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: center;
+  gap: 28px;
+}
+
+.image-container {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: inline-block;
+}
+
+.image-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.1);
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.caption {
+  padding: 14px 16px;
+  font-size: 14px;
+  color: #333;
+  border-top: 1px solid #eee;
+  background: #fafafa;
+  text-align: center;
+}
+
+/* CSV links section */
+.csv-links {
+  margin-top: 50px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  text-align: center;
+}
+
+.csv-links a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #0077cc;
+  font-weight: bold;
+}
+
+.csv-links a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .gallery-screen {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
 </head>
+
 <body>
 
-  <p>Data no done yet<p>
+<div id="header-placeholder"></div>
+
+<script>
+fetch('header.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('header-placeholder').innerHTML = data;
+  });
+</script>
+
+<main>
+
+  <div class="description">
+    These graphs show system monitoring data collected over a <strong>5-day period</strong>, with a new data point recorded every 30 minutes. 
+    The AI processes were running but idle, not under intensive use.
+  </div>
+
+  <div class="gallery-screen">
+    <div class="image-container">
+      <img src="images/Ram-Usage.png" alt="RAM Usage">
+      <div class="caption">RAM Usage</div>
+    </div>
+
+    <div class="image-container">
+      <img src="images/Pi-Cores.png" alt="CPU load>
+      <div class="caption">CPU Core Usage</div>
+    </div>
+
+    <div class="image-container">
+      <img src="images/Network-Traffic.png" alt="Network Traffic">
+      <div class="caption">Network Traffic</div>
+    </div>
+
+    <div class="image-container">
+      <img src="images/Pi-Temps.png" alt="Temperature">
+      <div class="caption">Temperature</div>
+    </div>
+  </div>
+
+  <div class="csv-links">
+    View / download the CSV files: 
+    <a href="data/used_ram.csv" target="_blank">RAM Usage</a>
+    <a href="data/load.csv" target="_blank">CPU load</a>
+    <a href="data/throttled.csv" target="_blank">Throttling</a>
+    <a href="data/temp.csv" target="_blank">Temperature</a>
+    <a href="data/clock.csv" target="_blank">CPU clock frequency</a>
+    <a href="data/total_ram.csv" target="_blank">Total ram</a>
+    <a href="data/available_ram.csv" target="_blank">Unused ram</a>
+    <a href="data/traffic.csv" target="_blank">Network Traffic</a>
+  </div>
+
+</main>
 
 </body>
 </html>
