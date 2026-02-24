@@ -120,7 +120,14 @@ main {
   text-align: center;
   white-space: nowrap;
 }
-
+.raw-data h3 {
+  text-align: center;
+  margin: 25px 0 15px; /* top 25px, bottom 15px */
+}
+.csv-downloads {
+  text-align: center;
+  margin-bottom: 25px;
+}
 /* ===== Responsive ===== */
 @media (max-width: 900px) {
   .gallery-screen {
@@ -181,9 +188,9 @@ fetch('header.html')
   <!-- ===== RAW DATA ===== -->
   <div class="raw-data">
     <h2>Raw Data</h2>
-    <p></p>
+
     <h3> Download Links </h3>
-    <p></p>
+
     <div class="csv-downloads">
       <a href="csvs/used_ram.csv" download>RAM Usage</a>
       <a href="csvs/load.csv" download>CPU Load</a>
@@ -194,9 +201,9 @@ fetch('header.html')
       <a href="csvs/available_ram.csv" download>Unused RAM</a>
       <a href="csvs/traffic.csv" download>Network Traffic</a>
     </div>
-    <p></p>
+
     <h3> Web Viewable data </h3>
-    <p></p>
+
     <div class="csv-table-container" id="csv-used-ram"></div>
     <div class="csv-table-container" id="csv-load"></div>
     <div class="csv-table-container" id="csv-throttled"></div>
