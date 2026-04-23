@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <title>System Monitoring Data</title>
 <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 
 <style>
 * {
@@ -21,7 +20,6 @@ body {
   padding-bottom: 50px;
 }
 
-/* ===== HEADER ===== */
 header {
   position: sticky;
   top: 0;
@@ -32,12 +30,10 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  text-align: center;
 }
 
-/* ===== MAIN CONTENT ===== */
 main {
-  max-width: 1200px; /* matches old max-width */
+  max-width: 1200px;
   margin: 50px auto;
   padding: 0 20px;
 }
@@ -61,8 +57,7 @@ main {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  display: inline-block;
+  transition: 0.25s;
 }
 
 .image-container:hover {
@@ -71,17 +66,22 @@ main {
 }
 
 .image-container img {
-  max-width: 100%;
-  height: auto;
+  width: 100%;
   display: block;
 }
 
 .caption {
-  padding: 14px 16px;
+  padding: 10px;
   font-size: 14px;
-  color: #333;
-  border-top: 1px solid #eee;
+  text-align: center;
   background: #fafafa;
+  border-top: 1px solid #eee;
+}
+
+.sub-caption {
+  font-size: 12px;
+  color: #666;
+  padding: 0 10px 10px;
   text-align: center;
 }
 
@@ -90,22 +90,30 @@ main {
   margin-top: 50px;
 }
 
-.raw-data h2 {
+.raw-data h2, .raw-data h3 {
   text-align: center;
-  margin-bottom: 30px;
+  margin: 20px 0;
 }
 
-/* ===== CSV TABLES ===== */
+.csv-downloads {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.csv-downloads a {
+  margin: 0 8px;
+}
+
+/* ===== TABLES ===== */
 .csv-table-container {
-  margin: 20px auto;       /* center each table */
+  margin: 20px auto;
   background: #fff;
   border-radius: 12px;
   padding: 10px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.06);
   overflow: auto;
-  width: 100%;             /* full width of main content */
-  max-width: 1200px;       /* matches main content width */
-  height: 25vh;            /* original height */
+  max-width: 1200px;
+  height: 25vh;
 }
 
 .csv-table-container table {
@@ -114,33 +122,20 @@ main {
   font-size: 12px;
 }
 
-.csv-table-container th, .csv-table-container td {
+.csv-table-container th, 
+.csv-table-container td {
   border: 1px solid #ddd;
   padding: 6px 8px;
   text-align: center;
   white-space: nowrap;
 }
-.raw-data h3 {
-  text-align: center;
-  margin: 25px 0 15px; /* top 25px, bottom 15px */
-}
-.csv-downloads {
-  text-align: center;
-  margin-bottom: 25px;
-}
+
 /* ===== Responsive ===== */
 @media (max-width: 900px) {
   .gallery-screen {
     grid-template-columns: 1fr;
   }
-
-  .csv-table-container {
-    width: 100%;
-  }
 }
-  .center-text {
-    text-align: center;
-  }
 </style>
 </head>
 
@@ -150,98 +145,106 @@ main {
 
 <script>
 fetch('header.html')
-  .then(response => response.text())
-  .then(data => {
-    document.getElementById('header-placeholder').innerHTML = data;
-  });
+  .then(r => r.text())
+  .then(d => document.getElementById('header-placeholder').innerHTML = d);
 </script>
 
 <main>
 
-  <div class="description">
-    These graphs show system monitoring data collected over a <strong>5-day period</strong>, with a new data point recorded every 30 minutes. 
-    The AI processes were running but idle, not under intensive use.
+<div class="description">
+These graphs show system monitoring data collected over a <strong>5-day period</strong>, with a new data point recorded every 30 minutes. 
+The AI processes were running but idle, not under intensive use.
+</div>
+
+<div class="gallery-screen">
+
+  <div class="image-container">
+    <img src="images/Ram-Usage.png">
+    <div class="caption">RAM Usage</div>
   </div>
 
-  <div class="gallery-screen">
-    <div class="image-container">
-      <img src="images/Ram-Usage.png" alt="RAM Usage">
-      <div class="caption">RAM Usage</div>
-    </div>
+  <div class="image-container">
+    <img src="images/Pi-Cores.png">
+    <div class="caption">CPU Core Usage</div>
+  </div>
 
-    <div class="image-container">
-      <img src="images/Pi-Cores.png" alt="CPU load">
-      <div class="caption">CPU Core Usage</div>
-    </div>
+  <div class="image-container">
+    <img src="images/Network-Traffic.png">
+    <div class="caption">Network Traffic</div>
+  </div>
 
-    <div class="image-container">
-      <img src="images/Network-Traffic.png" alt="Network Traffic">
-      <div class="caption">Network Traffic</div>
-    </div>
+  <div class="image-container">
+    <img src="images/Pi-Temps.png">
+    <div class="caption">Temperature</div>
+  </div>
 
-    <div class="image-container">
-      <img src="images/Pi-Temps.png" alt="Temperature">
-      <div class="caption">Temperature</div>
+  <!-- NEW IMAGE -->
+  <div class="image-container">
+    <img src="images/Temp-In-Case.png">
+    <div class="caption">Temperature (In Case)</div>
+    <div class="sub-caption">
+      Temperature over a 1 day period while the cluster was in its locker, It runs around ~10 degress hotter than while outside and a drop can be seen at 12:00 on 4/17 when the lid was opened.
     </div>
   </div>
 
-  <!-- ===== RAW DATA ===== -->
-  <div class="raw-data">
-    <h2>Raw Data</h2>
+</div>
 
-    <h3> Download Links </h3>
+<div class="raw-data">
+<h2>Raw Data</h2>
 
-    <div class="csv-downloads">
-      <a href="csvs/used_ram.csv" download>RAM Usage</a>
-      <a href="csvs/load.csv" download>CPU Load</a>
-      <a href="csvs/throttled.csv" download>Throttling</a>
-      <a href="csvs/temp.csv" download>Temperature</a>
-      <a href="csvs/clock.csv" download>CPU Clock</a>
-      <a href="csvs/total_ram.csv" download>Total RAM</a>
-      <a href="csvs/available_ram.csv" download>Unused RAM</a>
-      <a href="csvs/traffic.csv" download>Network Traffic</a>
-    </div>
+<h3>Download Links</h3>
+<div class="csv-downloads">
+  <a href="csvs/used_ram.csv" download>RAM Usage</a>
+  <a href="csvs/load.csv" download>CPU Load</a>
+  <a href="csvs/throttled.csv" download>Throttling</a>
+  <a href="csvs/temp.csv" download>Temperature</a>
+  <a href="csvs/temp_in_case.csv" download>Temp In Case</a>
+  <a href="csvs/clock.csv" download>CPU Clock</a>
+  <a href="csvs/total_ram.csv" download>Total RAM</a>
+  <a href="csvs/available_ram.csv" download>Unused RAM</a>
+  <a href="csvs/traffic.csv" download>Network Traffic</a>
+</div>
 
-    <h3> Web Viewable data </h3>
+<h3>Web Viewable Data</h3>
 
-    <div class="csv-table-container" id="csv-used-ram"></div>
-    <div class="csv-table-container" id="csv-load"></div>
-    <div class="csv-table-container" id="csv-throttled"></div>
-    <div class="csv-table-container" id="csv-temp"></div>
-    <div class="csv-table-container" id="csv-clock"></div>
-    <div class="csv-table-container" id="csv-total-ram"></div>
-    <div class="csv-table-container" id="csv-available-ram"></div>
-    <div class="csv-table-container" id="csv-traffic"></div>
-  </div>
+<div class="csv-table-container" id="csv-used-ram"></div>
+<div class="csv-table-container" id="csv-load"></div>
+<div class="csv-table-container" id="csv-throttled"></div>
+<div class="csv-table-container" id="csv-temp"></div>
+<div class="csv-table-container" id="csv-temp-case"></div> <!-- NEW -->
+<div class="csv-table-container" id="csv-clock"></div>
+<div class="csv-table-container" id="csv-total-ram"></div>
+<div class="csv-table-container" id="csv-available-ram"></div>
+<div class="csv-table-container" id="csv-traffic"></div>
+
+</div>
 
 </main>
 
 <script>
-// Helper function to load CSV into mini table
-function loadCSV(containerId, csvPath, title) {
-  fetch(csvPath)
-    .then(response => response.text())
+function loadCSV(id, path, title) {
+  fetch(path)
+    .then(r => r.text())
     .then(text => {
       const rows = text.trim().split('\n').map(r => r.split(','));
-      let html = '<h3 style="margin:10px 0; text-align:center;">' + title + '</h3>';
-      html += '<table>';
-      rows.forEach((row, i) => {
-        html += '<tr>' + row.map(cell => i===0 ? '<th>'+cell+'</th>' : '<td>'+cell+'</td>').join('') + '</tr>';
+      let html = `<h3 style="text-align:center;">${title}</h3><table>`;
+      rows.forEach((row,i)=>{
+        html += "<tr>" + row.map(c => i===0 ? `<th>${c}</th>`:`<td>${c}</td>`).join("") + "</tr>";
       });
-      html += '</table>';
-      document.getElementById(containerId).innerHTML = html;
+      html += "</table>";
+      document.getElementById(id).innerHTML = html;
     });
 }
 
-// Load all 8 CSVs
-loadCSV('csv-used-ram', 'csvs/used_ram.csv', 'RAM Usage');
-loadCSV('csv-load', 'csvs/load.csv', 'CPU load');
-loadCSV('csv-throttled', 'csvs/throttled.csv', 'Throttling');
-loadCSV('csv-temp', 'csvs/temp.csv', 'Temperature');
-loadCSV('csv-clock', 'csvs/clock.csv', 'CPU Clock Frequency');
-loadCSV('csv-total-ram', 'csvs/total_ram.csv', 'Total RAM');
-loadCSV('csv-available-ram', 'csvs/available_ram.csv', 'Unused RAM');
-loadCSV('csv-traffic', 'csvs/traffic.csv', 'Network Traffic');
+loadCSV('csv-used-ram','csvs/used_ram.csv','RAM Usage');
+loadCSV('csv-load','csvs/load.csv','CPU Load');
+loadCSV('csv-throttled','csvs/throttled.csv','Throttling');
+loadCSV('csv-temp','csvs/temp.csv','Temperature');
+loadCSV('csv-temp-case','csvs/temp_in_case.csv','Temperature (In Case)'); // NEW
+loadCSV('csv-clock','csvs/clock.csv','CPU Clock');
+loadCSV('csv-total-ram','csvs/total_ram.csv','Total RAM');
+loadCSV('csv-available-ram','csvs/available_ram.csv','Unused RAM');
+loadCSV('csv-traffic','csvs/traffic.csv','Network Traffic');
 </script>
 
 </body>
