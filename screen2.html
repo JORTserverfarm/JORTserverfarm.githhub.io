@@ -85,6 +85,13 @@ main {
   text-align: center;
 }
 
+/* ===== CENTER LAST IMAGE ===== */
+.gallery-screen .image-container:last-child {
+  grid-column: 1 / -1;
+  justify-self: center;
+  max-width: 600px;
+}
+
 /* ===== RAW DATA ===== */
 .raw-data {
   margin-top: 50px;
@@ -135,6 +142,11 @@ main {
   .gallery-screen {
     grid-template-columns: 1fr;
   }
+
+  .gallery-screen .image-container:last-child {
+    grid-column: auto;
+    max-width: 100%;
+  }
 }
 </style>
 </head>
@@ -183,7 +195,7 @@ The AI processes were running but idle, not under intensive use.
     <img src="images/Temp-In-Case.png">
     <div class="caption">Temperature (In Case)</div>
     <div class="sub-caption">
-      Temperature over a 1 day period while the cluster was in its locker, It runs around ~10 degress hotter than while outside and a drop can be seen at 12:00 on 4/17 when the lid was opened.
+      Temperature over a 1 day period while the cluster was in its locker. It runs around ~10 degrees hotter than while outside and a drop can be seen at 12:00 on 4/17 when the lid was opened.
     </div>
   </div>
 
@@ -211,7 +223,7 @@ The AI processes were running but idle, not under intensive use.
 <div class="csv-table-container" id="csv-load"></div>
 <div class="csv-table-container" id="csv-throttled"></div>
 <div class="csv-table-container" id="csv-temp"></div>
-<div class="csv-table-container" id="csv-temp-case"></div> <!-- NEW -->
+<div class="csv-table-container" id="csv-temp-case"></div>
 <div class="csv-table-container" id="csv-clock"></div>
 <div class="csv-table-container" id="csv-total-ram"></div>
 <div class="csv-table-container" id="csv-available-ram"></div>
@@ -240,7 +252,7 @@ loadCSV('csv-used-ram','csvs/used_ram.csv','RAM Usage');
 loadCSV('csv-load','csvs/load.csv','CPU Load');
 loadCSV('csv-throttled','csvs/throttled.csv','Throttling');
 loadCSV('csv-temp','csvs/temp.csv','Temperature');
-loadCSV('csv-temp-case','csvs/temp_in_case.csv','Temperature (In Case)'); // NEW
+loadCSV('csv-temp-case','csvs/temp_in_case.csv','Temperature (In Case)');
 loadCSV('csv-clock','csvs/clock.csv','CPU Clock');
 loadCSV('csv-total-ram','csvs/total_ram.csv','Total RAM');
 loadCSV('csv-available-ram','csvs/available_ram.csv','Unused RAM');
